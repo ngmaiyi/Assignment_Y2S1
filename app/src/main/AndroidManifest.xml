@@ -55,13 +55,13 @@
 
         <activity android:name=".ContactUs" />
         <activity android:name=".AboutUs" />
-        <activity android:name=".PurchasedHistory">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".History"/>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
     </application>
 
 </manifest>
