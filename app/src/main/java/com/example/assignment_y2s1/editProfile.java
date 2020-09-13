@@ -61,44 +61,6 @@ public class editProfile extends AppCompatActivity {
 
     }
 
-    public void getUserProviderProfileInfo(View view) {
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user != null) {
-            for (UserInfo profile : user.getProviderData()) {
-                String providerId = profile.getProviderId();
-
-                String uid = profile.getUid();
-
-                String name = profile.getDisplayName();
-                String email = profile.getEmail();
-
-                Toast.makeText(this, "id :" + providerId + ", uid :" + uid + "name: " + name
-                + "email : " + email, Toast.LENGTH_SHORT).show();
-            };
-        }
-    }
-
-//    public void updateUserProfile(View view) {
-//        FirebaseUser user = mAuth.getCurrentUser();
-//
-//        String newName = etName.getText().toString();
-//        if (TextUtils.isEmpty(newName))
-//            return;
-//
-//        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-//                .setDisplayName(newName)
-//                .build();
-//
-//        user.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Void> task) {
-//                if (task.isSuccessful()) {
-//                    Toast.makeText(editProfile.this, "Usernname updated", Toast.LENGTH_SHORT).show();;
-//                }
-//            }
-//        });
-//    }
-
     public void setUserEmail(View view) {
         String newEmail = etEmail.getText().toString();
         if(TextUtils.isEmpty(newEmail))

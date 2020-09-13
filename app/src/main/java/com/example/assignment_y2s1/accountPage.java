@@ -74,11 +74,11 @@ public class accountPage extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
 
-//                    case R.id.action_product:
-//                        startActivity(new Intent(getApplicationContext()
-//                                , ProductHomePageActivity.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
+                    case R.id.action_product:
+                        startActivity(new Intent(getApplicationContext()
+                                , ProductHomeapgeActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
 
                     case R.id.action_cart:
                         startActivity(new Intent(getApplicationContext()
