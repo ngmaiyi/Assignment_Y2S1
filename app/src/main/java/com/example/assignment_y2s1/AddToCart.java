@@ -158,7 +158,7 @@ public class AddToCart extends AppCompatActivity {
         SimpleDateFormat TimeFormat = new SimpleDateFormat("a HH:mm:ss");
         time = TimeFormat.format(Date.getTime());
 
-        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Cart List");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Cart List");
         final HashMap<String,Object> map = new HashMap<>();
         map.put("prodID",prodID);
         map.put("NameProd1",name.getText().toString());
@@ -166,7 +166,6 @@ public class AddToCart extends AppCompatActivity {
         map.put("Quantity Order",quantity.getText());
         map.put("Order Date",date);
         map.put("Order Time",time);
-
 
         ref.child("Product")
                 .child(prodID)
