@@ -40,6 +40,7 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cart_main);
 
+
         total_amount = 0.0;
 
         priceText = findViewById(R.id.price_text);
@@ -156,11 +157,11 @@ private void GetData() {
 
                 productsList.add(products);
             }
-
             recyclerAdapter = new RecyclerAdapter(getApplicationContext(), productsList);
             recyclerView.setAdapter(recyclerAdapter);
             recyclerAdapter.notifyDataSetChanged();
             priceText.setText("RM" + String.valueOf(total_amount));
+
         }
 
         @Override
