@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,8 @@ public class AddToCart extends AppCompatActivity {
     Button btnaddtocart;
     String prodID = "";
     int count = 0;
+    CheckBox XL,L,M,S;
+    String size = "";
     Member member;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,10 @@ public class AddToCart extends AppCompatActivity {
         btnless=findViewById(R.id.btnLess);
         btnadd=findViewById(R.id.btnAdd);
         btnaddtocart=findViewById(R.id.buttonAddCart);
+        XL=findViewById(R.id.cbxXl);
+        L=findViewById(R.id.cbxL);
+        M=findViewById(R.id.cbxM);
+        S=findViewById(R.id.cbxS);
 
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +83,7 @@ public class AddToCart extends AppCompatActivity {
                 AddProductToCart();
             }
         });
+
 
     }
 
@@ -158,13 +166,29 @@ public class AddToCart extends AppCompatActivity {
         date = DateFormat.format(Date.getTime());
         SimpleDateFormat TimeFormat = new SimpleDateFormat("a HH:mm:ss");
         time = TimeFormat.format(Date.getTime());
-
+        if (XL.isChecked())
+        {
+            size=("XL");
+        }
+        else if(L.isChecked())
+        {
+            size=("L");
+        }
+        else if(M.isChecked())
+        {
+            size=("M");
+        }
+        else if(S.isChecked())
+        {
+            size=("S");
+        }
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Cart List");
         final HashMap<String,Object> map = new HashMap<>();
         map.put("prodID",prodID);
         map.put("Name",name.getText().toString());
         map.put("Price",price.getText());
         map.put("Quantity Order",quantity.getText());
+        map.put("Size",size);
         map.put("Order Date",date);
         map.put("Order Time",time);
 
