@@ -6,58 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".editProfile">
 
-    <TextView
-    android:id="@+id/textView5"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="59dp"
-    android:layout_marginTop="140dp"
-    android:text="Name"
-    android:textSize="20sp" />
+    <!--    <TextView-->
+<!--        android:id="@+id/textView7"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="59dp"-->
+<!--        android:layout_marginTop="340dp"-->
+<!--        android:text="Email"-->
+<!--        android:textSize="20sp" />-->
 
-    <EditText
-        android:id="@+id/txtName"
-        android:layout_width="293dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="165dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
+<!--    <EditText-->
+<!--        android:id="@+id/txtEmail"-->
+<!--        android:layout_width="294dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="56dp"-->
+<!--        android:layout_marginTop="365dp"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="textEmailAddress" />-->
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="59dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="23dp"
         android:layout_marginTop="240dp"
-        android:text="Phone"
+        android:text="new Password"
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/txtphone"
-        android:layout_width="293dp"
+        android:id="@+id/txtPass"
+        android:layout_width="261dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="57dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="265dp"
         android:ems="10"
-        android:inputType="phone" />
+        android:inputType="textPassword" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="340dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="140dp"
         android:text="Email"
         android:textSize="20sp" />
 
     <EditText
         android:id="@+id/txtEmail"
-        android:layout_width="294dp"
+        android:layout_width="263dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="365dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="165dp"
         android:ems="10"
         android:inputType="textEmailAddress" />
 
@@ -77,8 +80,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="61dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="393dp"
         android:background="@drawable/round_btn"
+        android:onClick="setUserEmail"
+        android:text="Save" />
+
+    <Button
+        android:id="@+id/btn_save2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="291dp"
+        android:background="@drawable/round_btn"
+        android:onClick="setUserPassword"
         android:text="Save" />
 </RelativeLayout>

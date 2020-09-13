@@ -3,47 +3,131 @@ package com.example.assignment_y2s1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.auth.UserInfo;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
 
 public class editProfile extends AppCompatActivity {
 
-    DatabaseReference reference;
-    FirebaseUser user;
-    String uid;
+    FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
+    private EditText etEmail, etName, etPass;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        uid = user.getUid();
 
+        etEmail = (EditText) findViewById(R.id.txtEmail);
+        etPass = (EditText) findViewById(R.id.txtPass);
 
-        reference = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
 
-        reference.addValueEventListener(new ValueEventListener() {
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String name = dataSnapshot.child(uid).child("name").getValue(String.class);
-                String phone = dataSnapshot.child(uid).child("phone").getValue(String.class);
-                String email = dataSnapshot.child(uid).child("email").getValue(String.class);
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user == null) {
+                    Intent intent = new Intent(editProfile.this, MainActivity.class);
+                    intent.putExtra("goToActivityUsers", true);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    etEmail.setText(user.getEmail());
+                }
             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+        };
 
+    }
+
+    public void getUserProviderProfileInfo(View view) {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user != null) {
+            for (UserInfo profile : user.getProviderData()) {
+                String providerId = profile.getProviderId();
+
+                String uid = profile.getUid();
+
+                String name = profile.getDisplayName();
+                String email = profile.getEmail();
+
+                Toast.makeText(this, "id :" + providerId + ", uid :" + uid + "name: " + name
+                + "email : " + email, Toast.LENGTH_SHORT).show();
+            };
+        }
+    }
+
+//    public void updateUserProfile(View view) {
+//        FirebaseUser user = mAuth.getCurrentUser();
+//
+//        String newName = etName.getText().toString();
+//        if (TextUtils.isEmpty(newName))
+//            return;
+//
+//        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+//                .setDisplayName(newName)
+//                .build();
+//
+//        user.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                if (task.isSuccessful()) {
+//                    Toast.makeText(editProfile.this, "Usernname updated", Toast.LENGTH_SHORT).show();;
+//                }
+//            }
+//        });
+//    }
+
+    public void setUserEmail(View view) {
+        String newEmail = etEmail.getText().toString();
+        if(TextUtils.isEmpty(newEmail))
+            return;
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        user.updateEmail(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful())
+                    Toast.makeText(editProfile.this, "email updated", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+    public void setUserPassword(View view) {
+        FirebaseUser user = mAuth.getCurrentUser();
+        String newPass = etPass.getText().toString();
+        if(TextUtils.isEmpty(newPass))
+            return;
 
+        user.updatePassword(newPass)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful())
+                            Toast.makeText(editProfile.this, "password updated", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 }
