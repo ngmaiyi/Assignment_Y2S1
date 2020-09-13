@@ -102,7 +102,6 @@ public class register_page extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull final Task<AuthResult> task) {
                         if(task.isSuccessful()){
-
                             Toast.makeText(register_page.this,"User Created.",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),register_successfully_page.class));
                         }

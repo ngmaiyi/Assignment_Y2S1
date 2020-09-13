@@ -44,6 +44,12 @@ import com.google.firebase.auth.GoogleAuthProvider;
 //facebook
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     TextView mCreateBtn,forgotTextLink;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
+    private DatabaseReference ref;
     //---------------------------------------------
 
     // Google Button
@@ -96,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         mCancelBtn     = findViewById(R.id.btn_cancel);
         // mCreateBtn     = findViewById(R.id.createText);
         forgotTextLink = findViewById(R.id.forgotPassword);
+
 
         //facebook button -----------------------------------------------
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -141,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(MainActivity.this, "Logged is Successfully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), accountPage.class));
+
                         }
                         else
                         {
@@ -152,6 +161,8 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
+
 
         // Forgot Password function
         forgotTextLink.setOnClickListener(new View.OnClickListener() {
@@ -272,7 +283,53 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    //wai kit add
+//    private void isUser() {
+//        final String enteredEmail = mEmail.getText().toString().trim();
+//        final String enteredPassword = mPassword.getText().toString().trim();
+//
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
+//
+//            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//
+//                if(dataSnapshot.exists()) {
+//                    String passFromDB = dataSnapshot.child(enteredEmail).child("password").getValue(String.class);
+//
+//                    if(passFromDB.equals(enteredPassword)) {
+//                        String usernameFromDB = dataSnapshot.child(enteredEmail).child("username").getValue(String.class);
+//                        String phoneFromDB = dataSnapshot.child(enteredEmail).child("phone").getValue(String.class);
+//                        String emailFromDB = dataSnapshot.child(enteredEmail).child("email").getValue(String.class);
+//
+//                        Intent intent = new Intent(getApplicationContext(),editProfile.class);
+//
+//                        intent.putExtra("username", usernameFromDB);
+//                        intent.putExtra("phone", phoneFromDB);
+//                        intent.putExtra("email", emailFromDB);
+//
+//                        startActivity(intent);
+//                    }
+////                    else {
+////                        mPassword.setError("Wrong password");
+////                    }
+//                }
+////                else {
+////                    mEmail.setError("No such email exist");
+////                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
     //end OnCreate
+
 
 
     //user login email and password and facebook
@@ -405,6 +462,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
         mFirebaseAuth.addAuthStateListener(authStateListener);
+
+
     }
 
     @Override
