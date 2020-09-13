@@ -3,13 +3,13 @@ package com.example.assignment_y2s1;
 public class Member {
     private  String prodID;
     private String NameProd;
-    private int PriceProd;
+    private float PriceProd;
     private int Quantity;
     private String ImageProd;
     private String Comment;
     public Member(){}
 
-    public Member(String prodID, String nameProd, int priceProd, int quantity, String imageProd, String comment) {
+    public Member(String prodID, String nameProd, float priceProd, int quantity, String imageProd, String comment) {
         this.prodID = prodID;
         NameProd = nameProd;
         PriceProd = priceProd;
@@ -34,7 +34,7 @@ public class Member {
         NameProd = nameProd;
     }
 
-    public int getPriceProd() {
+    public float getPriceProd() {
         return PriceProd;
     }
 

@@ -38,6 +38,7 @@ public class AddToCart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_to_cart);
+
         prodID = getIntent().getStringExtra("prodID");
         name = findViewById(R.id.nameProd);
         price = findViewById(R.id.priceProd);
@@ -79,7 +80,7 @@ public class AddToCart extends AppCompatActivity {
 
     private void getWomenData(String prodID)
     {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Data");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Women");
 
         ref.child(prodID).addValueEventListener(new ValueEventListener() {
             @Override
@@ -126,7 +127,7 @@ public class AddToCart extends AppCompatActivity {
 
     private void getKidsData(String prodID)
     {
-        DatabaseReference ref =FirebaseDatabase.getInstance().getReference().child("Men");
+        DatabaseReference ref =FirebaseDatabase.getInstance().getReference().child("Kids");
 
         ref.child(prodID).addValueEventListener(new ValueEventListener() {
             @Override
