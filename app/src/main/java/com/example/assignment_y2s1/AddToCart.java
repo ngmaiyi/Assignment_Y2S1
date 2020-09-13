@@ -90,7 +90,7 @@ public class AddToCart extends AppCompatActivity {
                 {
                     Member member = dataSnapshot.getValue(Member.class);
                     name.setText(member.getNameProd());
-                    price.setText("RM" + member.getPriceProd());
+                    price.setText(member.getPriceProd());
                     Picasso.get().load(member.getImageProd()).into(image);
                 }
             }
@@ -113,7 +113,7 @@ public class AddToCart extends AppCompatActivity {
                 {
                     Member member = dataSnapshot.getValue(Member.class);
                     name.setText(member.getNameProd());
-                    price.setText("RM" + member.getPriceProd());
+                    price.setText(member.getPriceProd());
                     Picasso.get().load(member.getImageProd()).into(image);
                 }
             }
@@ -137,7 +137,7 @@ public class AddToCart extends AppCompatActivity {
                 {
                     Member member = dataSnapshot.getValue(Member.class);
                     name.setText(member.getNameProd());
-                    price.setText("RM" + member.getPriceProd());
+                    price.setText(member.getPriceProd());
                     Picasso.get().load(member.getImageProd()).into(image);
                 }
             }

@@ -3,13 +3,13 @@ package com.example.assignment_y2s1;
 public class Member {
     private  String prodID;
     private String NameProd;
-    private float PriceProd;
+    private String PriceProd;
     private int Quantity;
     private String ImageProd;
     private String Comment;
     public Member(){}
 
-    public Member(String prodID, String nameProd, float priceProd, int quantity, String imageProd, String comment) {
+    public Member(String prodID, String nameProd, String priceProd, int quantity, String imageProd, String comment) {
         this.prodID = prodID;
         NameProd = nameProd;
         PriceProd = priceProd;
@@ -34,11 +34,11 @@ public class Member {
         NameProd = nameProd;
     }
 
-    public float getPriceProd() {
+    public String getPriceProd() {
         return PriceProd;
     }
 
-    public void setPriceProd(int priceProd) {
+    public void setPriceProd(String priceProd) {
         PriceProd = priceProd;
     }
 
