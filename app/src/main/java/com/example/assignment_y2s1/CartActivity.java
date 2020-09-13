@@ -3,6 +3,7 @@ package com.example.assignment_y2s1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -27,9 +29,9 @@ public class CartActivity extends AppCompatActivity {
 
     private ArrayList<Products> productsList;
     private RecyclerAdapter recyclerAdapter;
-
+    String prodID="";
     private TextView priceText;
-
+    ImageView imageview;
     private TextView prodPrice;
     private double total_amount;
 
@@ -48,6 +50,8 @@ public class CartActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
+        imageview=findViewById(R.id.imageview);
+
         myRef = FirebaseDatabase.getInstance().getReference();
 
         productsList = new ArrayList<>();
@@ -56,41 +60,113 @@ public class CartActivity extends AppCompatActivity {
 
         GetData();
     }
+//    private void getWomenData(String prodID)
+//    {
+//        //set reference to get the data inside "Data" in firebase
+//        DatabaseReference ref =FirebaseDatabase.getInstance().getReference().child("Women");
+//
+//        ref.child(prodID).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if(dataSnapshot.exists())
+//                {
+//                    Member member = dataSnapshot.getValue(Member.class);
+//                    productname.setText(member.getNameProd());
+//                    prodPrice.setText(String.valueOf(member.getPriceProd()));
+////                    total_amount += Double.parseDouble(String.valueOf(dataSnapshot.child("Price").getValue()));
+////                    priceText.setText("RM" + String.valueOf(total_amount));
+//                    Picasso.get().load(member.getImageProd()).into(imageview);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
+//
+//    private void getMenData(String prodID)
+//    {
+//        DatabaseReference ref =FirebaseDatabase.getInstance().getReference().child("Men");
+//
+//        ref.child(prodID).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if(dataSnapshot.exists())
+//                {
+//                    Member member = dataSnapshot.getValue(Member.class);
+//                    productname.setText(member.getNameProd());
+//                    prodPrice.setText(String.valueOf(member.getPriceProd()));
+////                    total_amount += Double.parseDouble(String.valueOf(dataSnapshot.child("Price").getValue()));
+////                    priceText.setText("RM" + String.valueOf(total_amount));
+//                    Picasso.get().load(member.getImageProd()).into(imageview);
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
+//
+//    private void getKidData(String prodID)
+//    {
+//        DatabaseReference ref =FirebaseDatabase.getInstance().getReference().child("Kids");
+//
+//        ref.child(prodID).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if(dataSnapshot.exists())
+//                {
+//                    Member member = dataSnapshot.getValue(Member.class);
+//                    productname.setText(member.getNameProd());
+//                    prodPrice.setText(String.valueOf(member.getPriceProd()));
+////                    total_amount += Double.parseDouble(String.valueOf(dataSnapshot.child("Price").getValue()));
+////                    priceText.setText("RM" + String.valueOf(total_amount));
+//                    Picasso.get().load(member.getImageProd()).into(imageview);
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
+private void GetData() {
 
-    private void GetData() {
+    Query query = myRef.child("Cart List").child("Product");
 
-        Query query = myRef.child("products");
+    query.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            ClearAll();
 
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ClearAll();
+            for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                Products products = new Products();
 
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Products products = new Products();
+//                products.setImageUrl(dataSnapshot.child("image").getValue().toString());
+                products.setName(dataSnapshot.child("Name").getValue().toString());
+                products.setPrice("RM" + dataSnapshot.child("Price").getValue().toString());
 
-                    products.setImageUrl(dataSnapshot.child("image").getValue().toString());
-                    products.setName(dataSnapshot.child("name").getValue().toString());
-                    products.setPrice("RM" + dataSnapshot.child("price").getValue().toString());
+                total_amount += Double.parseDouble(String.valueOf(dataSnapshot.child("Price").getValue()));
 
-                    total_amount += Double.parseDouble(String.valueOf(dataSnapshot.child("price").getValue()));
-
-                    productsList.add(products);
-                }
-
-                recyclerAdapter = new RecyclerAdapter(getApplicationContext(), productsList);
-                recyclerView.setAdapter(recyclerAdapter);
-                recyclerAdapter.notifyDataSetChanged();
-                priceText.setText("RM" + String.valueOf(total_amount));
+                productsList.add(products);
             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            recyclerAdapter = new RecyclerAdapter(getApplicationContext(), productsList);
+            recyclerView.setAdapter(recyclerAdapter);
+            recyclerAdapter.notifyDataSetChanged();
+            priceText.setText("RM" + String.valueOf(total_amount));
+        }
 
-            }
-        });
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
 
-    }
+        }
+    });
+
+}
 
     private void ClearAll() {
         if (productsList != null) {

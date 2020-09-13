@@ -34,6 +34,7 @@ public class AddToCart extends AppCompatActivity {
     Button btnaddtocart;
     String prodID = "";
     int count = 0;
+    Member member;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -161,8 +162,8 @@ public class AddToCart extends AppCompatActivity {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Cart List");
         final HashMap<String,Object> map = new HashMap<>();
         map.put("prodID",prodID);
-        map.put("NameProd1",name.getText().toString());
-        map.put("PriceProd1",price.getText().toString());
+        map.put("Name",name.getText().toString());
+        map.put("Price",price.getText());
         map.put("Quantity Order",quantity.getText());
         map.put("Order Date",date);
         map.put("Order Time",time);
@@ -176,7 +177,8 @@ public class AddToCart extends AppCompatActivity {
                         if (task.isSuccessful())
                         {
                             Toast.makeText(AddToCart.this,"Added",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(AddToCart.this,ProductDetailsActivity.class);
+                            Intent intent = new Intent(AddToCart.this,CartActivity.class);
+                            intent.putExtra("prodID",prodID);
                             startActivity(intent);
                         }
                     }
