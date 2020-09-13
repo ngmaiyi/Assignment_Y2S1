@@ -40,6 +40,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         holder.productName.setText(productsList.get(position).getName());
         holder.productPrice.setText(productsList.get(position).getPrice());
+        holder.productQuantity.setText(productsList.get(position).getQuantity());
 
         Glide.with(mContext)
                 .load(productsList.get(position).getImageUrl())
@@ -59,6 +60,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         ImageView imageView;
         TextView productName;
         TextView productPrice;
+        TextView productQuantity;
 
 
 
@@ -69,6 +71,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             imageView = itemView.findViewById(R.id.imageview);
             productName = itemView.findViewById(R.id.product_name);
             productPrice = itemView.findViewById(R.id.product_price);
+            productQuantity = itemView.findViewById(R.id.product_quantity);
         }
     }
 }

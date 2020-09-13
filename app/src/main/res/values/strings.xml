@@ -12,4 +12,39 @@
     <string name="send_message">Sent Successful</string>
     <string name="ValueProduct">0</string>
 
+    <string name="date">Date</string>
+    <string name="purchase_history">Purchase History</string>
+    <string name="items_purchased">Items Purchased</string>
+    <string name="htf">HTF</string>
+    <string name="version">Version 7.0.1</string>
+    <string name="name">Enter Your Name</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="enter_your_email">Enter Your Email</string>
+    <string name="enter_your_message">Enter Your Message</string>
+    <string name="button_send">Send</string>
+
+    <string-array name="purchased_items">
+        <item>Items1</item>
+        <item>Item2</item>
+        <item>Item3</item>
+        <item>Item4</item>
+        <item>Item5</item>
+    </string-array>
+
+    <string-array name="quantity">
+        <item>Qty:1</item>
+        <item>Qty:1</item>
+        <item>Qty:1</item>
+        <item>Qty:1</item>
+        <item>Qty:1</item>
+    </string-array>
+
+    <string-array name="price">
+        <item>RM15</item>
+        <item>RM15</item>
+        <item>RM15</item>
+        <item>RM15</item>
+        <item>RM15</item>
+    </string-array>
+
 </resources>
