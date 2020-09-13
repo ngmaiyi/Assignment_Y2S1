@@ -33,12 +33,14 @@ public class CartActivity extends AppCompatActivity {
     private TextView priceText;
     ImageView imageview;
     private TextView prodPrice;
-    private Float total_amount;
+    private Double total_amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cart_main);
+
+        total_amount = 0.0;
 
         priceText = findViewById(R.id.price_text);
 
@@ -149,7 +151,7 @@ private void GetData() {
                 products.setName(dataSnapshot.child("Name").getValue().toString());
                 products.setPrice("RM" + dataSnapshot.child("Price").getValue().toString());
 
-                total_amount += Float.parseFloat(String.valueOf(dataSnapshot.child("Price").getValue()));
+                total_amount += Double.parseDouble(String.valueOf(dataSnapshot.child("Price").getValue()));
 
                 productsList.add(products);
             }
