@@ -33,7 +33,7 @@ public class CartActivity extends AppCompatActivity {
     private TextView priceText;
     ImageView imageview;
     private TextView prodPrice;
-    private double total_amount;
+    private Float total_amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class CartActivity extends AppCompatActivity {
 
         imageview=findViewById(R.id.imageview);
 
-        myRef = FirebaseDatabase.getInstance().getReference();
+        myRef = FirebaseDatabase.getInstance().getReference("Cart List");
 
         productsList = new ArrayList<>();
 
@@ -135,7 +135,7 @@ public class CartActivity extends AppCompatActivity {
 //    }
 private void GetData() {
 
-    Query query = myRef.child("Cart List").child("Product");
+    Query query = myRef.child("Product");
 
     query.addValueEventListener(new ValueEventListener() {
         @Override
@@ -149,7 +149,7 @@ private void GetData() {
                 products.setName(dataSnapshot.child("Name").getValue().toString());
                 products.setPrice("RM" + dataSnapshot.child("Price").getValue().toString());
 
-                total_amount += Double.parseDouble(String.valueOf(dataSnapshot.child("Price").getValue()));
+                total_amount += Float.parseFloat(String.valueOf(dataSnapshot.child("Price").getValue()));
 
                 productsList.add(products);
             }
