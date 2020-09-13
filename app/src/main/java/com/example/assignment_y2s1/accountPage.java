@@ -106,15 +106,15 @@ public class accountPage extends AppCompatActivity {
             }
         });
 
-//        button = (Button) findViewById(R.id.btn_cust_detail);
-//        button.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(accountPage.this, cust_main.class);
-//                startActivity(intent);
-//            }
-//        });
+        button = (Button) findViewById(R.id.btn_cust_detail);
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(accountPage.this, cust_main.class);
+                startActivity(intent);
+            }
+        });
 
 
         //-------------------------------------------
