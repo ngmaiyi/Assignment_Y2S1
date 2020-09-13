@@ -116,6 +116,37 @@ public class accountPage extends AppCompatActivity {
             }
         });
 
+        button = (Button) findViewById(R.id.btn_purch_history);
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(accountPage.this, PurchasedHistory.class);
+                startActivity(intent);
+            }
+        });
+
+        button = (Button) findViewById(R.id.btn_contact);
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(accountPage.this, ContactUs.class);
+                startActivity(intent);
+            }
+        });
+
+        button = (Button) findViewById(R.id.btn_about);
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(accountPage.this, AboutUs.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         //-------------------------------------------
         //google sign out

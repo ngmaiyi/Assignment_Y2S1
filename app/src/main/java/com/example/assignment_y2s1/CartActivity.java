@@ -29,7 +29,7 @@ public class CartActivity extends AppCompatActivity {
 
     private ArrayList<Products> productsList;
     private RecyclerAdapter recyclerAdapter;
-    String prodID="";
+
     private TextView priceText;
     ImageView imageview;
     private TextView prodPrice;
@@ -148,6 +148,7 @@ private void GetData() {
 //                products.setImageUrl(dataSnapshot.child("image").getValue().toString());
                 products.setName(dataSnapshot.child("Name").getValue().toString());
                 products.setPrice("RM" + dataSnapshot.child("Price").getValue().toString());
+                products.setQuantity(dataSnapshot.child("Quantity Order").getValue().toString());
 
                 total_amount += Float.parseFloat(String.valueOf(dataSnapshot.child("Price").getValue()));
 

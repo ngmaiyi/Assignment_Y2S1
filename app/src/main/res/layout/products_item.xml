@@ -39,17 +39,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+        <TextView
             android:id="@+id/product_quantity"
-            app:textSize="10sp"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginStart="250dp"
-            app:backGroundColor="@color/colorPrimaryDark"
-            app:initialNumber="0"
-            app:finalNumber="10"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:layout_marginTop="70dp"
+            android:layout_marginStart="320dp"
+            android:textSize="25sp" />
+
+
     </androidx.cardview.widget.CardView>
 
 </FrameLayout>
