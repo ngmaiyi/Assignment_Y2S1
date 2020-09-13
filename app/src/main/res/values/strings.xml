@@ -9,5 +9,7 @@
     <string name="product_icon">product</string>
     <string name="cart_icon">cart</string>
     <string name="account_icon">account</string>
+    <string name="send_message">Sent</string>
+    <string name="ValueProduct">1</string>
 
 </resources>
