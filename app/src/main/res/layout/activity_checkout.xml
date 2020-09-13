@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckoutActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/delivery_option_text"
+            android:text="Delivery Option"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroup_delivery"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/round_rectangle">
+
+            <RadioButton
+                android:id="@+id/radio_delivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button"
+                android:drawablePadding="210dp"
+                android:text="Delivery to Home"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/button_pick_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Pick Up"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button"
+                android:drawablePadding="270dp"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/payment_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment Method"
+            android:layout_marginTop="160dp"
+            android:layout_marginStart="30dp"
+            android:textSize="20sp"/>
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="190dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/round_rectangle"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/card_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Debit/Credit Card"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/card_no"
+                android:text="Card No"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/edit_card_no"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/security_code"
+                android:text="Security Code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/edit_security_code"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:inputType="number"
+                android:background="@android:drawable/editbox_background_normal"/>
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/year_text"
+                    android:text="Year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"/>
+
+                <TextView
+                    android:id="@+id/month_text"
+                    android:text="Month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="150dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+
+                <EditText
+                    android:id="@+id/edit_year"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="30dp"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:background="@android:drawable/editbox_background_normal"/>
+
+                <EditText
+                    android:id="@+id/edit_month"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="80dp"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:background="@android:drawable/editbox_background_normal"/>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginTop="40dp"/>
+
+            <CheckBox
+                android:id="@+id/check_cash"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:drawablePadding="200dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/checkbox"
+                android:checked="false"
+                android:text="Cash on Delivery" />
+        </LinearLayout>
+
+        <TextView
+            android:text="Total"
+            android:layout_marginTop="630dp"
+            android:layout_marginStart="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/price_text1"
+            android:text="RM45.00"
+            android:layout_marginTop="650dp"
+            android:layout_marginStart="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/button_checkout"
+            android:text="Submit"
+            android:layout_marginTop="630dp"
+            android:layout_marginStart="240dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="SuccessActivity"/>
+    </RelativeLayout>
+
+</ScrollView>
