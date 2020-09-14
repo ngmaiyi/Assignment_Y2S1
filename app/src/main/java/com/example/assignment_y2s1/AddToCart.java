@@ -183,6 +183,7 @@ public class AddToCart extends AppCompatActivity {
             size=("S");
         }
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Cart List");
+        //store item in key or value and access with string
         final HashMap<String,Object> map = new HashMap<>();
         map.put("prodID",prodID);
         map.put("Name",name.getText().toString());
