@@ -45,9 +45,9 @@ public class MenProdActivity extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<Member, ViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull final Member model) {
-                        holder.NameProd1.setText(model.getNameProd());
-                        holder.PriceProd1.setText("RM" + model.getPriceProd());
-                        Picasso.get().load(model.getImageProd()).into(holder.ImageProd1);
+                        holder.NameProd.setText(model.getNameProd());
+                        holder.PriceProd.setText("RM" + model.getPriceProd());
+                        Picasso.get().load(model.getImageProd()).into(holder.ImageProd);
 
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override

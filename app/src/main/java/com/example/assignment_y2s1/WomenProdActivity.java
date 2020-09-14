@@ -29,6 +29,7 @@ public class WomenProdActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
         firebaseDatabase = FirebaseDatabase.getInstance();
+        //get data in Women
         reference = firebaseDatabase.getReference("Women");
     }
 
@@ -38,6 +39,7 @@ public class WomenProdActivity extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Member> options =
                 new FirebaseRecyclerOptions.Builder<Member>()
+                        //set query for Women and Member
                         .setQuery(reference,Member.class)
                         .build();
 
@@ -45,14 +47,17 @@ public class WomenProdActivity extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<Member, ViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull final Member model) {
-                        holder.NameProd1.setText(model.getNameProd());
-                        holder.PriceProd1.setText("RM" + model.getPriceProd());
-                        Picasso.get().load(model.getImageProd()).into(holder.ImageProd1);
+                        //set text inside viewholder
+                        holder.NameProd.setText(model.getNameProd());
+                        holder.PriceProd.setText("RM" + model.getPriceProd());
+                        Picasso.get().load(model.getImageProd()).into(holder.ImageProd);
 
+                        //send data to Product Details activity
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 Intent intent = new Intent(WomenProdActivity.this,ProductDetailsActivity.class);
+                                //put in the prod ID
                                 intent.putExtra("prodID",model.getProdID());
                                 startActivity(intent);
                             }

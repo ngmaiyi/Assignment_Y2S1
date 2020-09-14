@@ -7,16 +7,16 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    public TextView NameProd1, PriceProd1;
+    public TextView NameProd, PriceProd;
     String prodID;
-    public ImageView ImageProd1;
+    public ImageView ImageProd;
     public ItemClickListener listener;
     public  ViewHolder(View itemView)
     {
         super(itemView);
-        ImageProd1 = (ImageView) itemView.findViewById(R.id.rImageView);
-        NameProd1 = (TextView) itemView.findViewById(R.id.name);
-        PriceProd1 = (TextView) itemView.findViewById(R.id.price);
+        ImageProd = (ImageView) itemView.findViewById(R.id.rImageView);
+        NameProd = (TextView) itemView.findViewById(R.id.name);
+        PriceProd = (TextView) itemView.findViewById(R.id.price);
 
     }
 
