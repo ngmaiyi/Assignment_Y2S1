@@ -26,12 +26,6 @@ public class ProductHomeapgeActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.action_home:
-                        startActivity(new Intent(getApplicationContext()
-                                , MainActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
                     case R.id.action_product:
                         startActivity(new Intent(getApplicationContext()
                                 , ProductHomeapgeActivity.class));

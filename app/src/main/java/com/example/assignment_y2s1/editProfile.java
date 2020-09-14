@@ -26,6 +26,7 @@ public class editProfile extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     private EditText etEmail, etName, etPass;
+    Button backBtn;
 
     @Override
     protected void onStart() {
@@ -40,6 +41,7 @@ public class editProfile extends AppCompatActivity {
 
         etEmail = (EditText) findViewById(R.id.txtEmail);
         etPass = (EditText) findViewById(R.id.txtPass);
+        backBtn = (Button) findViewById(R.id.btnBack);
 
         mAuth = FirebaseAuth.getInstance();
 

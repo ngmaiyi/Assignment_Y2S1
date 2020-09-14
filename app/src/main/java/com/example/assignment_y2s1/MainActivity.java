@@ -284,50 +284,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //wai kit add
-//    private void isUser() {
-//        final String enteredEmail = mEmail.getText().toString().trim();
-//        final String enteredPassword = mPassword.getText().toString().trim();
-//
-//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
-//
-//            ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//
-//                if(dataSnapshot.exists()) {
-//                    String passFromDB = dataSnapshot.child(enteredEmail).child("password").getValue(String.class);
-//
-//                    if(passFromDB.equals(enteredPassword)) {
-//                        String usernameFromDB = dataSnapshot.child(enteredEmail).child("username").getValue(String.class);
-//                        String phoneFromDB = dataSnapshot.child(enteredEmail).child("phone").getValue(String.class);
-//                        String emailFromDB = dataSnapshot.child(enteredEmail).child("email").getValue(String.class);
-//
-//                        Intent intent = new Intent(getApplicationContext(),editProfile.class);
-//
-//                        intent.putExtra("username", usernameFromDB);
-//                        intent.putExtra("phone", phoneFromDB);
-//                        intent.putExtra("email", emailFromDB);
-//
-//                        startActivity(intent);
-//                    }
-////                    else {
-////                        mPassword.setError("Wrong password");
-////                    }
-//                }
-////                else {
-////                    mEmail.setError("No such email exist");
-////                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
     //end OnCreate
 
 
