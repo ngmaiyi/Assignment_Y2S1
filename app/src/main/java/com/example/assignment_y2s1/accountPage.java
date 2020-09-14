@@ -86,11 +86,11 @@ public class accountPage extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
 
-//                    case R.id.action_account:
-//                        startActivity(new Intent(getApplicationContext()
-//                                , AccountActivity.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
+                    case R.id.action_account:
+                        startActivity(new Intent(getApplicationContext()
+                                , accountPage.class));
+                        overridePendingTransition(0,0);
+                        return true;
                 }
                 return false;
             }
@@ -121,7 +121,7 @@ public class accountPage extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(accountPage.this, PurchasedHistory.class);
+                Intent intent = new Intent(accountPage.this, History.class);
                 startActivity(intent);
             }
         });

@@ -46,8 +46,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 .load(productsList.get(position).getImageUrl())
                 .into(holder.imageView);
 
-
-
     }
 
     @Override
@@ -61,9 +59,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         TextView productName;
         TextView productPrice;
         TextView productQuantity;
-
-
-
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

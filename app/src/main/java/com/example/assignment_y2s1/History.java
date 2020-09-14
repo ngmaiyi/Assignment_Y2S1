@@ -1,8 +1,6 @@
 package com.example.assignment_y2s1;
 
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,43 +16,37 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-
-public class PurchasedHistory extends AppCompatActivity {
+public class History extends AppCompatActivity {
     RecyclerView recyclerView;
 
     private DatabaseReference myRef;
 
-    private ArrayList<Products> productsList;
-    private ItemAdapter itemAdapter;
-
-    private TextView prodPrice;
-
+    private ArrayList<Details> detailsList;
+    private DetailAdapter detailAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_purchased_history);
+        setContentView(R.layout.activity_history);
 
-        prodPrice = findViewById(R.id.price_txt);
-
-        recyclerView = findViewById(R.id.recyclerview);
+        recyclerView = findViewById(R.id.recycleView2);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-
-
         myRef = FirebaseDatabase.getInstance().getReference("Cart List");
 
-        productsList = new ArrayList<>();
+        detailsList = new ArrayList<>();
+
+        GetDataFromFirebase();
 
         ClearAll();
 
-        GetData();
     }
 
-    private void GetData() {
+    private void GetDataFromFirebase(){
+
         Query query = myRef.child("Product");
 
         query.addValueEventListener(new ValueEventListener() {
@@ -63,19 +55,20 @@ public class PurchasedHistory extends AppCompatActivity {
                 ClearAll();
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Products products = new Products();
+                    Details details = new Details();
 
 //                products.setImageUrl(dataSnapshot.child("image").getValue().toString());
-                    products.setName(dataSnapshot.child("Name").getValue().toString());
-                    products.setPrice("RM" + dataSnapshot.child("Price").getValue().toString());
+                    details.setName(dataSnapshot.child("Name").getValue().toString());
+                    details.setPrice("RM" + dataSnapshot.child("Price").getValue().toString());
+                    details.setQuantity(dataSnapshot.child("Quantity Order").getValue().toString());
 
 
-                    productsList.add(products);
+                    detailsList.add(details);
                 }
 
-                itemAdapter = new ItemAdapter(getApplicationContext(), productsList);
-                recyclerView.setAdapter(itemAdapter);
-                itemAdapter.notifyDataSetChanged();
+                detailAdapter = new DetailAdapter(getApplicationContext(), detailsList);
+                recyclerView.setAdapter(detailAdapter);
+                detailAdapter.notifyDataSetChanged();
 
             }
 
@@ -85,18 +78,18 @@ public class PurchasedHistory extends AppCompatActivity {
             }
         });
 
-
     }
 
-    private void ClearAll() {
-        if (productsList != null) {
-            productsList.clear();
+    private void ClearAll(){
+        if (detailsList != null){
+            detailsList.clear();
 
-            if (itemAdapter != null) {
-                itemAdapter.notifyDataSetChanged();
+            if (detailAdapter != null) {
+                detailAdapter.notifyDataSetChanged();
             }
         }
 
-        productsList = new ArrayList<>();
+        detailsList = new ArrayList<>();
     }
+
 }

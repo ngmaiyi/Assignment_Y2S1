@@ -21,18 +21,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="290dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Order Information has been sent to your email"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/success_text" />
-
     <Button
         android:id="@+id/button_done"
         android:layout_width="250dp"
