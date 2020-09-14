@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private String TAG = "MainActivity";
     private FirebaseAuth mAuth;
-    //private Button btnSignOut;
+   // private Button btnSignOut;
     private int RC_SIGN_IN = 1;
     //private Button here_button;
     //---------------------------------------------
@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
 //        btnSignOut.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                mGoogleSignInClient.signOut();
+//               mGoogleSignInClient.signOut();
 //                btnSignOut.setVisibility(View.INVISIBLE);
 //                Toast.makeText(MainActivity.this,"Your are Logged Out",Toast.LENGTH_SHORT).show();
 //            }
@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAGFacebook,"onSuccess" + loginResult);
-                handleFacebookToken(loginResult.getAccessToken());
+                //handleFacebookToken(loginResult.getAccessToken());
             }
 
             @Override
@@ -261,11 +261,11 @@ public class MainActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user !=null){
-                    updateUIFacebook(user);
+                    //updateUIFacebook(user);
                 }
                 else
                 {
-                    updateUIFacebook(null);
+                    //updateUIFacebook(null);
                 }
             }
         };
@@ -356,33 +356,28 @@ public class MainActivity extends AppCompatActivity {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         if (account != null) {
             String personName = account.getDisplayName();
-//            String personGivenName = account.getGivenName();
-//            String personFamilyName = account.getFamilyName();
-//            String personEmail = account.getEmail();
-//            String personID = account.getId();
-//            Uri personPhoto = account.getPhotoUrl();
 
             Toast.makeText(MainActivity.this,"Welcome " + personName, Toast.LENGTH_SHORT).show();
         }
     }
 
     //facebook
-    private void updateUIFacebook(FirebaseUser user){
-        if(user != null){
-            textViewUser.setText(user.getDisplayName());
-            if(user.getPhotoUrl()!=null){
-                String photoUr1 = user.getPhotoUrl().toString();
-                photoUr1 = photoUr1 + "?type=large";
-                Picasso.get().load(photoUr1).into(mLogo);
-            }
-            else
-            {
-                textViewUser.setText("");
-                mLogo.setImageResource(R.drawable.background);
-            }
-        }
-
-    }
+//    private void updateUIFacebook(FirebaseUser user){
+//        if(user != null){
+//            textViewUser.setText(user.getDisplayName());
+//            if(user.getPhotoUrl()!=null){
+//                String photoUr1 = user.getPhotoUrl().toString();
+//                photoUr1 = photoUr1 + "?type=large";
+//                Picasso.get().load(photoUr1).into(mLogo);
+//            }
+//            else
+//            {
+//                textViewUser.setText("");
+//                mLogo.setImageResource(R.drawable.background);
+//            }
+//        }
+//
+//    }
     public void  openactivity_register_page(View view) {
         Intent intent = new Intent(this, register_page.class);
         startActivity(intent);
@@ -391,28 +386,28 @@ public class MainActivity extends AppCompatActivity {
     //facebook button
 
     //facebook
-    private void handleFacebookToken(AccessToken token){
-        Log.d(TAGFacebook,"handleFacebookToken" + token);
-        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
-        mFirebaseAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Log.d(TAGFacebook,"sign in with credential:successful");
-                    FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                    updateUIFacebook(user);
-                    startActivity(new Intent(getApplicationContext(), accountPage.class));
-                }
-                else
-                {
-                    Log.d(TAGFacebook,"sign in with credential:failure",task.getException());
-                    Toast.makeText(MainActivity.this, "Authentication Failed",Toast.LENGTH_SHORT).show();
-                    updateUIFacebook(null);
-
-                }
-            }
-        });
-    }
+//    private void handleFacebookToken(AccessToken token){
+//        Log.d(TAGFacebook,"handleFacebookToken" + token);
+//        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+//        mFirebaseAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//                if(task.isSuccessful()){
+//                    Log.d(TAGFacebook,"sign in with credential:successful");
+//                    FirebaseUser user = mFirebaseAuth.getCurrentUser();
+//                    updateUIFacebook(user);
+//                    startActivity(new Intent(getApplicationContext(), accountPage.class));
+//                }
+//                else
+//                {
+//                    Log.d(TAGFacebook,"sign in with credential:failure",task.getException());
+//                    Toast.makeText(MainActivity.this, "Authentication Failed",Toast.LENGTH_SHORT).show();
+//                    updateUIFacebook(null);
+//
+//                }
+//            }
+//        });
+//    }
 
     @Override
     protected void onStart(){

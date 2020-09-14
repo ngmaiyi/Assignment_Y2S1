@@ -266,7 +266,8 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+        tools:visibility="gone" />
 
     <TextView
         android:id="@+id/text_user"
@@ -276,7 +277,8 @@
         android:text="TextView"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/image_logo" />
+        app:layout_constraintEnd_toStartOf="@+id/image_logo"
+        tools:visibility="gone" />
 
     <!--    <Button-->
 <!--        android:id="@+id/sign_out_button"-->

@@ -161,6 +161,15 @@
                 android:layout_marginTop="-325dp"
                 app:srcCompat="@drawable/bright_purple_light_pink_gradient_473x1024" />
 
+            <Button
+                android:id="@+id/sign_out_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp"
+                android:text="Sign Out" />
+
 
         </RelativeLayout>
 

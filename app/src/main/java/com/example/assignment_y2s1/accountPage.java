@@ -64,6 +64,9 @@ public class accountPage extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.action_account);
 
 
+
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -142,28 +145,28 @@ public class accountPage extends AppCompatActivity {
         });
 
 
-
         //-------------------------------------------
         //google sign out
-//        btnSignOut = findViewById(R.id.sign_out_button);
-//
-//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestIdToken(getString(R.string.default_web_client_id))
-//                .requestEmail()
-//                .build();
-//
-//        mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
-//        btnSignOut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                mGoogleSignInClient.signOut();
-//                mFirebaseAuth.signOut();
-//                btnSignOut.setVisibility(View.INVISIBLE);
-//                Toast.makeText(accountPage.this,"Your are Logged Out",Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//            }
-//        });
+        btnSignOut = findViewById(R.id.sign_out_button);
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
+        btnSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mGoogleSignInClient.signOut();
+                //mFirebaseAuth.signOut();
+                btnSignOut.setVisibility(View.INVISIBLE);
+                Toast.makeText(accountPage.this,"Your are Logged Out",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
         //---------------------------------------------
+
         //Facebook Sign Out
 //         accessTokenTracker  = new AccessTokenTracker() {
 //            @Override
